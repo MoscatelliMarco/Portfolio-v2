@@ -62,18 +62,29 @@ type InlineNode =
       children: InlineNode[];
     };
 
-type SupportedTag = "accent" | "handwritten" | "shimmering" | "link" | "image";
+type SupportedTag =
+  | "accent"
+  | "age"
+  | "handwritten"
+  | "icon"
+  | "img"
+  | "link"
+  | "shimmering"
+  | "underline";
 
 const supportedTags = new Set<SupportedTag>([
   "accent",
+  "age",
   "handwritten",
-  "shimmering",
+  "icon",
+  "img",
   "link",
-  "image",
+  "shimmering",
+  "underline",
 ]);
 
 const tagPattern =
-  /<\/?(accent|handwritten|shimmering|link|image)\b[^>]*>/g;
+  /<\/?(accent|age|handwritten|icon|img|link|shimmering|underline)\b[^>]*>/g;
 
 function parseMarkdownParagraphs(markdown: string): ParsedParagraph[] {
   return markdown
@@ -116,7 +127,11 @@ function parseNodesUntil(
     const rawTag = match[0];
     const tagName = match[1] as SupportedTag;
     const isClosingTag = rawTag.startsWith("</");
-    const isSelfClosing = rawTag.endsWith("/>") || tagName === "image";
+    const isSelfClosing =
+      rawTag.endsWith("/>") ||
+      tagName === "age" ||
+      tagName === "icon" ||
+      tagName === "img";
     state.cursor = match.index + rawTag.length;
 
     if (isClosingTag) {
@@ -137,11 +152,6 @@ function parseNodesUntil(
 
     if (isSelfClosing) {
       nodes.push({ type: "tag", name: tagName, attrs, children: [] });
-
-      if (tagName === "image" && text.startsWith("</image>", state.cursor)) {
-        state.cursor += "</image>".length;
-      }
-
       continue;
     }
 
@@ -194,6 +204,9 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
         </span>
       );
 
+    case "age":
+      return <span key={key}>{calculateAge()}</span>;
+
     case "handwritten":
       return (
         <span
@@ -202,6 +215,20 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
         >
           {children}
         </span>
+      );
+
+    case "icon":
+      return <InlineIcon key={key} name={node.attrs.name} />;
+
+    case "img":
+      return (
+        <img
+          key={key}
+          alt={node.attrs.alt ?? ""}
+          src={node.attrs.src ?? ""}
+          className="mr-1 mb-1 inline h-[1em] w-auto align-middle"
+          loading="lazy"
+        />
       );
 
     case "shimmering":
@@ -222,7 +249,7 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
         <a
           key={key}
           href={node.attrs.href}
-          className="animated-underline-link inline cursor-pointer font-medium whitespace-nowrap text-[#fafafa]"
+          className="inline cursor-pointer font-medium whitespace-nowrap text-[#fafafa] transition-colors hover:text-white"
           target={node.attrs.href?.startsWith("http") ? "_blank" : undefined}
           rel={node.attrs.href?.startsWith("http") ? "noreferrer" : undefined}
         >
@@ -230,15 +257,11 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
         </a>
       );
 
-    case "image":
+    case "underline":
       return (
-        <img
-          key={key}
-          alt={node.attrs.alt ?? ""}
-          src={node.attrs.src ?? ""}
-          className="mr-1 mb-1 inline h-[1em] w-auto align-middle"
-          loading="lazy"
-        />
+        <span key={key} className="animated-underline-link inline">
+          {children}
+        </span>
       );
   }
 }
@@ -253,4 +276,50 @@ function nodesToText(nodes: InlineNode[]): string {
       return nodesToText(node.children);
     })
     .join("");
+}
+
+function calculateAge(): string {
+  const birthdate =
+    import.meta.env.VITE_BIRTHDATE ?? import.meta.env.BIRTHDATE ?? "";
+  const parsedBirthdate = new Date(`${birthdate}T00:00:00`);
+
+  if (!birthdate || Number.isNaN(parsedBirthdate.getTime())) {
+    return "19";
+  }
+
+  const today = new Date();
+  let age = today.getFullYear() - parsedBirthdate.getFullYear();
+  const birthdayThisYear = new Date(
+    today.getFullYear(),
+    parsedBirthdate.getMonth(),
+    parsedBirthdate.getDate()
+  );
+
+  if (today < birthdayThisYear) {
+    age -= 1;
+  }
+
+  return String(age);
+}
+
+function InlineIcon({ name }: { name?: string }) {
+  if (name?.toLowerCase() !== "mail") {
+    return null;
+  }
+
+  return (
+    <svg
+      aria-hidden="true"
+      className="mr-1 mb-0.5 inline size-[1em] align-middle"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
 }

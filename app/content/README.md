@@ -36,6 +36,21 @@ Use `<shimmering>...</shimmering>` for animated shimmering text:
 I work on <shimmering>AI and data science</shimmering>.
 ```
 
+## Age
+
+Use `<age />` to calculate age from the `BIRTHDATE` environment variable. In browser-exposed Vite environments, use `VITE_BIRTHDATE`.
+
+```md
+I am <age /> years old.
+```
+
+Expected date format:
+
+```env
+BIRTHDATE=2006-01-01
+VITE_BIRTHDATE=2006-01-01
+```
+
 ## Links
 
 Use `<link href="...">...</link>` for links:
@@ -44,17 +59,35 @@ Use `<link href="...">...</link>` for links:
 You can find me on <link href="https://www.linkedin.com/in/moscatellimarco/">LinkedIn</link>.
 ```
 
-External links open in a new tab. Links have a fixed gray underline and a white left-to-right hover animation.
+External links open in a new tab. Links are not underlined by default.
+
+## Underline
+
+Use `<underline>...</underline>` for the animated underline:
+
+```md
+You can find me on <link href="https://www.linkedin.com/in/moscatellimarco/"><underline>LinkedIn</underline></link>.
+```
+
+The underline has a fixed gray base line and a white left-to-right hover animation.
 
 ## Images
 
-Use `<image src="..."></image>` for inline images. Put image files under `public/images`, then reference them from `/images/...`:
+Use `<img src="..." />` for inline images. Put image files under `public/images`, then reference them from `/images/...`:
 
 ```md
-Reach me on <image src="/images/linkedin.png"></image> <link href="https://www.linkedin.com/in/moscatellimarco/">LinkedIn</link>.
+Reach me on <img src="/images/linkedin.png" /> <link href="https://www.linkedin.com/in/moscatellimarco/">LinkedIn</link>.
 ```
 
 Images render inline at text height.
+
+## Icons
+
+Use `<icon name="mail" />` for the inline mail icon. GitHub and LinkedIn should use image assets from `public/images`.
+
+```md
+Email me at <link href="mailto:info@example.com"><icon name="mail" /><underline>info@example.com</underline></link>.
+```
 
 ## Notes
 
@@ -63,5 +96,5 @@ Supported tags can be nested:
 ```md
 This is <accent>white</accent>, this is <handwritten>Caveat</handwritten>, and this is <shimmering>shimmering</shimmering>.
 
-This is a <link href="https://example.com"><accent>white link</accent></link>.
+This is a <link href="https://example.com"><accent><underline>white underlined link</underline></accent></link>.
 ```
