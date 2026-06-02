@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-svh items-center justify-center bg-[#0a0a0a] px-6 py-16 font-sans text-[#a1a1a1] sm:px-10 md:px-16 lg:px-20">
-      <section className="flex max-w-lg flex-col gap-2">
+      <section className="flex max-w-lg flex-col gap-2 pb-2">
         {paragraphs.map((paragraph, index) => (
           <motion.p
             key={paragraph.key}
