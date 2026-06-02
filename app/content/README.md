@@ -71,21 +71,13 @@ You can find me on <link href="https://www.linkedin.com/in/moscatellimarco/"><un
 
 The underline has a fixed gray base line and a white left-to-right hover animation.
 
-## Images
-
-Use `<img src="..." />` for inline images. Put image files under `public/images`, then reference them from `/images/...`:
-
-```md
-Reach me on <img src="/images/linkedin.png" /> <link href="https://www.linkedin.com/in/moscatellimarco/">LinkedIn</link>.
-```
-
-Images render inline at text height.
-
 ## Icons
 
-Use `<icon name="mail" />` for the inline mail icon. GitHub and LinkedIn should use image assets from `public/images`.
+Use `<icon name="linkedin" />`, `<icon name="github" />`, or `<icon name="mail" />` for inline icons.
 
 ```md
+You can find me on <link href="https://www.linkedin.com/in/moscatellimarco/"><icon name="linkedin" /><underline>LinkedIn</underline></link>.
+See my code on <link href="https://github.com/MoscatelliMarco"><icon name="github" /><underline>GitHub</underline></link>.
 Email me at <link href="mailto:info@example.com"><icon name="mail" /><underline>info@example.com</underline></link>.
 ```
 

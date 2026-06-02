@@ -2,6 +2,7 @@ import type { Route } from "./+types/home";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import homeContent from "~/content/home.md?raw";
 import { ShimmeringText } from "~/components/ui/shimmering-text";
@@ -67,7 +68,6 @@ type SupportedTag =
   | "age"
   | "handwritten"
   | "icon"
-  | "img"
   | "link"
   | "shimmering"
   | "underline";
@@ -77,14 +77,13 @@ const supportedTags = new Set<SupportedTag>([
   "age",
   "handwritten",
   "icon",
-  "img",
   "link",
   "shimmering",
   "underline",
 ]);
 
 const tagPattern =
-  /<\/?(accent|age|handwritten|icon|img|link|shimmering|underline)\b[^>]*>/g;
+  /<\/?(accent|age|handwritten|icon|link|shimmering|underline)\b[^>]*>/g;
 
 function parseMarkdownParagraphs(markdown: string): ParsedParagraph[] {
   return markdown
@@ -130,8 +129,7 @@ function parseNodesUntil(
     const isSelfClosing =
       rawTag.endsWith("/>") ||
       tagName === "age" ||
-      tagName === "icon" ||
-      tagName === "img";
+      tagName === "icon";
     state.cursor = match.index + rawTag.length;
 
     if (isClosingTag) {
@@ -220,24 +218,11 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
     case "icon":
       return <InlineIcon key={key} name={node.attrs.name} />;
 
-    case "img":
-      return (
-        <img
-          key={key}
-          alt={node.attrs.alt ?? ""}
-          src={node.attrs.src ?? ""}
-          className="mr-1 mb-1 inline h-[1em] w-auto align-middle"
-          loading="lazy"
-        />
-      );
-
     case "shimmering":
       return (
         <ShimmeringText
           key={key}
           text={nodesToText(node.children)}
-          color="#a1a1a1"
-          shimmerColor="#fafafa"
           className="align-baseline font-medium"
           repeatDelay={0.8}
           spread={1.7}
@@ -303,23 +288,34 @@ function calculateAge(): string {
 }
 
 function InlineIcon({ name }: { name?: string }) {
-  if (name?.toLowerCase() !== "mail") {
-    return null;
+  const normalizedName = name?.toLowerCase();
+  const iconClassName = "mr-1 mb-0.5 inline size-[1em] align-middle text-[#fafafa]";
+
+  if (normalizedName === "github") {
+    return <FaGithub aria-hidden="true" className={iconClassName} />;
   }
 
-  return (
-    <svg
-      aria-hidden="true"
-      className="mr-1 mb-0.5 inline size-[1em] align-middle"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <rect width="20" height="16" x="2" y="4" rx="2" />
-      <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
-    </svg>
-  );
+  if (normalizedName === "linkedin") {
+    return <FaLinkedin aria-hidden="true" className={iconClassName} />;
+  }
+
+  if (normalizedName === "mail") {
+    return (
+      <svg
+        aria-hidden="true"
+        className={iconClassName}
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
+      </svg>
+    );
+  }
+
+  return null;
 }

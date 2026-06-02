@@ -43,8 +43,8 @@ export function ShimmeringText({
     <motion.span
       ref={ref}
       className={cn(
-        "relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent",
-        "[--base-color:var(--muted-foreground)] [--shimmer-color:var(--foreground)]",
+        "relative inline whitespace-normal bg-[length:250%_100%,auto] bg-clip-text text-transparent",
+        "[--base-color:#c4c4c4] [--shimmer-color:#eaf6ff]",
         "[background-repeat:no-repeat,padding-box]",
         "[--shimmer-bg:linear-gradient(90deg,transparent_calc(50%-var(--spread)),var(--shimmer-color),transparent_calc(50%+var(--spread)))]",
         className
