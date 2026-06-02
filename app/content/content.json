@@ -1,0 +1,62 @@
+{
+  "projects": [
+    {
+      "name": "Metis-ChessBot",
+      "link": "https://github.com/MoscatelliMarco/Metis-ChessBot",
+      "sourceCode": "https://github.com/MoscatelliMarco/Metis-ChessBot",
+      "overview": "A chess bot project focused on applying software engineering and game logic to chess analysis and play.",
+      "skills": ["Python", "PyTorch", "Machine Learning", "Game Theory Algorithms"]
+    },
+    {
+      "name": "Medusa Plugin Blogger",
+      "link": "https://github.com/MoscatelliMarco/medusa-plugin-blogger",
+      "sourceCode": "https://github.com/MoscatelliMarco/medusa-plugin-blogger",
+      "overview": "A MedusaJS plugin that adds blog article creation and management to the Medusa admin, connecting commerce and editorial content in one workflow.",
+      "skills": ["TypeScript", "React", "Node.js", "MedusaJS", "PostgreSQL"]
+    }
+  ],
+  "publications": [
+    {
+      "title": "Time Series Momentum Strategy with Macro-Instrumented Regime Switching",
+      "link": "https://bsic.it/time-series-momentum-strategy-with-macro-instrumented-regime-switching/",
+      "publishedAt": "2026",
+      "overview": "A research project on Time Series Momentum (TSMOM) using SPY and GLD, incorporating macro-aware regime switching to improve risk-adjusted returns. As part of the work, I ran a full backtest on a two-asset momentum system and identified a simple but powerful enhancement: whenever the model reduces exposure to SPY, investing the unused allocation into gold meaningfully improves Sharpe and drawdown stability. Gold’s low and regime-dependent correlation with equities allows the strategy to stay fully invested while dynamically shifting toward a defensive asset during adverse momentum or macro conditions (e.g., high uncertainty, regime 2 in the State Gate model). This improvement complements the paper’s broader contribution—combining multi-horizon momentum signals with macro-instrumented gates (yield-curve-based State Gate + oil-volatility OVX gate) to reduce momentum-crash risk. The final integrated approach achieves higher Sharpe, smoother return paths, and materially reduced drawdowns, all while maintaining a simple, ETF-only implementation accessible to any investor."
+    }
+  ],
+  "experience": [
+    {
+      "title": "Quant researcher",
+      "organization": "Bocconi Students Investment Club",
+      "period": "Jan 2026 - Present",
+      "overview": "Worked on a research paper focused on regime-based investing, where four market regimes are identified and a tailored strategy is applied in each case. Using an XGBoost model, the framework predicts which strategy is expected to perform best under current conditions, creating a dynamic and adaptive decision-making process."
+    },
+    {
+      "title": "AI researcher",
+      "organization": "Bocconi AI & NeuroScience Association",
+      "period": "Oct 2025 - Present",
+      "overview": "Built and backtested a macro-gated time-series momentum strategy on S&P 500 (SPY) and Gold (GLD), integrating an OVX oil-volatility gate and a yield-curve state model. Improved risk-adjusted returns and materially reduced crisis drawdowns through dynamic macro-driven risk scaling."
+    },
+    {
+      "title": "Web Developer",
+      "organization": "Freelancer",
+      "period": "June 2022 - Mar 2025",
+      "overview": "Delivered full-stack web projects, including SaaS platforms, eCommerce stores, and personal portfolios, from concept to deployment. Designed scalable web architectures, optimized application performance, and implemented CI/CD pipelines to streamline development and deployment workflows. Managed cloud hosting and infrastructure across platforms such as Vercel, Heroku, and Netlify, ensuring reliable and maintainable applications. Collaborated directly with clients across Europe, overseeing the entire development lifecycle, from UX design and API integration to deployment, testing, and ongoing maintenance."
+    }
+  ],
+  "education": [
+    {
+      "title": "BSc in Economics, Management and Computer Science",
+      "organization": "Universita Bocconi",
+      "period": "2025 - Present",
+      "overview": "GPA: 30/31. Bachelor studies in economics, management, and computer science at Bocconi University."
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Certificate in Advanced English",
+      "issuer": "Cambridge English",
+      "issuedAt": "August 2024",
+      "overview": "Credential ID C8306776."
+    }
+  ]
+}
