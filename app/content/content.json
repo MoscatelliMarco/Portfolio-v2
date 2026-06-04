@@ -13,6 +13,13 @@
       "sourceCode": "https://github.com/MoscatelliMarco/medusa-plugin-blogger",
       "overview": "A MedusaJS plugin that adds blog article creation and management to the Medusa admin, connecting commerce and editorial content in one workflow.",
       "skills": ["TypeScript", "React", "Node.js", "MedusaJS", "PostgreSQL"]
+    },
+    {
+      "name": "SensopinionNews",
+      "link": "https://sensopinionnews.vercel.app/",
+      "sourceCode": "https://github.com/MoscatelliMarco/SensopinionNews",
+      "overview": "A news sentiment analyzer that scrapes and classifies articles, then surfaces category-level metrics for emotion, positivity, and subjectivity across politics, economy, and environment. The app combines an interactive Svelte dashboard with a Python analysis pipeline for article processing, sentiment scoring, emotion detection, and topic filtering.",
+      "skills": ["HTML", "CSS", "JavaScript", "Svelte", "Tailwind CSS", "Figma", "Node.js", "Python", "FastAPI", "MongoDB"]
     }
   ],
   "publications": [

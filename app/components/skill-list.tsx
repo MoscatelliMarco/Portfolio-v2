@@ -11,6 +11,10 @@ import {
 } from "react-icons/fa";
 import {
   SiCplusplus,
+  SiCss,
+  SiFastapi,
+  SiFigma,
+  SiHtml5,
   SiJavascript,
   SiMedusa,
   SiMongodb,
@@ -22,6 +26,7 @@ import {
   SiPytorch,
   SiReactrouter,
   SiScikitlearn,
+  SiSvelte,
   SiTailwindcss,
   SiTensorflow,
   SiTypescript,
@@ -36,8 +41,12 @@ const skillIcons: Record<string, IconType> = {
   "game theory": FaChessKnight,
   "game theory algorithms": FaChessKnight,
   git: FaGitAlt,
+  css: SiCss,
+  fastapi: SiFastapi,
+  figma: SiFigma,
   java: FaJava,
   javascript: SiJavascript,
+  html: SiHtml5,
   "machine learning": SiScikitlearn,
   medusa: SiMedusa,
   medusajs: SiMedusa,
@@ -54,6 +63,7 @@ const skillIcons: Record<string, IconType> = {
   react: FaReact,
   "react router": SiReactrouter,
   "scikit-learn": SiScikitlearn,
+  svelte: SiSvelte,
   "tailwind css": SiTailwindcss,
   tensorflow: SiTensorflow,
   typescript: SiTypescript,
@@ -66,7 +76,7 @@ export function SkillList({ skills }: { skills: string[] }) {
   }
 
   return (
-    <ul className="flex flex-wrap gap-x-3 gap-y-2 text-[0.82rem] leading-none text-[#fafafa]">
+    <ul className="flex flex-wrap gap-x-3 gap-y-3 text-[0.82rem] leading-none text-[#fafafa]">
       {skills.map((skill) => {
         const Icon = skillIcons[skill.toLowerCase()];
 

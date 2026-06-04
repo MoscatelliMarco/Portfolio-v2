@@ -45,30 +45,61 @@ export default function App() {
   return <Outlet />;
 }
 
+const statusMessages: Record<number, string> = {
+  400: "Bad request",
+  401: "Unauthorized",
+  403: "Access denied",
+  404: "Page not found",
+  405: "Method not allowed",
+  408: "Request timeout",
+  500: "Internal server error",
+  502: "Bad gateway",
+  503: "Service unavailable",
+  504: "Gateway timeout",
+};
+
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
+  let statusCode = 500;
+  let message = statusMessages[statusCode];
+  let details: string | undefined;
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+    statusCode = error.status;
+    message =
+      statusMessages[statusCode] ||
+      error.statusText ||
+      "Unexpected route error";
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
+    <main className="flex min-h-svh items-center justify-center bg-[#0a0a0a] px-6 py-16 font-sans text-[#a1a1a1] sm:px-10 md:px-16 lg:px-20">
+      <section className="flex w-full max-w-lg flex-col items-center text-center">
+        <img
+          src="/error.webp"
+          alt=""
+          className="mb-9 w-full max-w-xs object-contain"
+          decoding="async"
+        />
+        <h1 className="text-5xl font-semibold text-[#fafafa] sm:text-6xl">
+          {statusCode}
+        </h1>
+        <p className="mt-3 text-[0.95rem] leading-[1.75]">{message}</p>
+        <a
+          href="/"
+          className="animated-underline-link mt-5 text-[0.82rem] font-medium text-[#fafafa]"
+        >
+          Home
+        </a>
+      </section>
+      {(details || stack) && (
+        <section className="sr-only" aria-label="Developer error details">
+          {details && <p>{details}</p>}
+          {stack && <pre>{stack}</pre>}
+        </section>
       )}
     </main>
   );
