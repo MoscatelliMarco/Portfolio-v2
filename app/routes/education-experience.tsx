@@ -84,7 +84,7 @@ function EntrySection({
           >
             <Paragraph>
               <span className="font-medium text-[#fafafa]">{entry.title}</span>
-              {" at "}
+              {entry.organization.toLowerCase() == "freelancer" ? " as " : " at "}
               <span className="text-[#fafafa]">{entry.organization}</span>
               {" / "}
               {entry.period}

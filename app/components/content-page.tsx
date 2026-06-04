@@ -29,11 +29,11 @@ export function ContentPage({
         >
           <a
             href="/"
-            className="animated-underline-link mb-5 inline-block text-[0.82rem] font-medium text-[#fafafa]"
+            className="animated-underline-link mb-6 inline-block text-[0.82rem] font-medium text-neutral-100"
           >
             Home
           </a>
-          <h1 className="text-xl font-medium text-[#fafafa]">{title}</h1>
+          <h1 className="text-xl xl:text-2xl font-medium text-[#fafafa]">{title}</h1>
         </motion.header>
         {children}
       </section>
