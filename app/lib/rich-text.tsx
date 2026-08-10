@@ -199,6 +199,7 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
           className="inline cursor-pointer font-medium whitespace-nowrap text-[#fafafa] transition-colors hover:text-white"
           target={node.attrs.href?.startsWith("http") ? "_blank" : undefined}
           rel={node.attrs.href?.startsWith("http") ? "noreferrer" : undefined}
+          download={node.attrs.download}
         >
           {children}
         </a>
@@ -251,22 +252,23 @@ function calculateAge(): string {
 
 function InlineIcon({ name }: { name?: string }) {
   const normalizedName = name?.toLowerCase();
-  const iconClassName =
-    "mr-1 mb-0.5 inline size-[1em] align-middle text-[#fafafa]";
+  const iconClassName = "mb-0.5 inline size-[1em] align-middle text-[#fafafa]";
+  const socialIconClassName = `mr-1 ${iconClassName}`;
+  const emailIconClassName = `mt-0.5 ${iconClassName}`;
 
   if (normalizedName === "github") {
-    return <FaGithub aria-hidden="true" className={iconClassName} />;
+    return <FaGithub aria-hidden="true" className={socialIconClassName} />;
   }
 
   if (normalizedName === "linkedin") {
-    return <FaLinkedin aria-hidden="true" className={iconClassName} />;
+    return <FaLinkedin aria-hidden="true" className={socialIconClassName} />;
   }
 
   if (normalizedName === "mail") {
     return (
       <svg
         aria-hidden="true"
-        className={iconClassName}
+        className={emailIconClassName}
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"

@@ -4,7 +4,7 @@
       "name": "Metis-ChessBot",
       "link": "https://github.com/MoscatelliMarco/Metis-ChessBot",
       "sourceCode": "https://github.com/MoscatelliMarco/Metis-ChessBot",
-      "overview": "A chess bot project focused on applying software engineering and game logic to chess analysis and play.",
+      "overview": "A chess engine reaching approximately 1700 Elo when benchmarked against Stockfish, built with minimax, alpha-beta pruning, reinforcement learning, and neural evaluation.",
       "skills": ["Python", "PyTorch", "Machine Learning", "Game Theory Algorithms"]
     },
     {
@@ -24,38 +24,64 @@
   ],
   "publications": [
     {
+      "title": "M&A Disclosure and Litigation Research",
+      "link": "https://ma-research.marcomoscatelli.com/",
+      "publishedAt": "Work in progress",
+      "overview": "My ongoing work as a Bocconi University research assistant, studying whether textual features in M&A disclosures predict post-merger litigation involving target companies."
+    },
+    {
       "title": "Time Series Momentum Strategy with Macro-Instrumented Regime Switching",
       "link": "https://bsic.it/time-series-momentum-strategy-with-macro-instrumented-regime-switching/",
       "publishedAt": "2026",
-      "overview": "A research project on Time Series Momentum (TSMOM) using SPY and GLD, incorporating macro-aware regime switching to improve risk-adjusted returns. As part of the work, I ran a full backtest on a two-asset momentum system and identified a simple but powerful enhancement: whenever the model reduces exposure to SPY, investing the unused allocation into gold meaningfully improves Sharpe and drawdown stability. Gold’s low and regime-dependent correlation with equities allows the strategy to stay fully invested while dynamically shifting toward a defensive asset during adverse momentum or macro conditions (e.g., high uncertainty, regime 2 in the State Gate model). This improvement complements the paper’s broader contribution—combining multi-horizon momentum signals with macro-instrumented gates (yield-curve-based State Gate + oil-volatility OVX gate) to reduce momentum-crash risk. The final integrated approach achieves higher Sharpe, smoother return paths, and materially reduced drawdowns, all while maintaining a simple, ETF-only implementation accessible to any investor."
+      "overview": "A macro-gated time-series momentum strategy for SPY and GLD that combines multi-horizon signals with yield-curve and oil-volatility regimes to improve risk-adjusted returns and reduce drawdowns."
     }
   ],
   "experience": [
     {
-      "title": "Quant researcher",
-      "organization": "Bocconi Students Investment Club",
-      "period": "Jan 2026 - Present",
-      "overview": "Worked on a research paper focused on regime-based investing, where four market regimes are identified and a tailored strategy is applied in each case. Using an XGBoost model, the framework predicts which strategy is expected to perform best under current conditions, creating a dynamic and adaptive decision-making process."
+      "title": "Generative AI Engineer Intern",
+      "organization": "Accenture",
+      "period": "Jul 2026 - Present",
+      "overview": "Developed a multi-agent AI concierge for Snam and am building a Neo4j knowledge graph and GraphRAG pipeline over internal documentation, combining graph retrieval with vector search and benchmarking it against standard RAG."
     },
     {
-      "title": "AI researcher",
-      "organization": "Bocconi AI & NeuroScience Association",
-      "period": "Oct 2025 - Present",
-      "overview": "Built and backtested a macro-gated time-series momentum strategy on S&P 500 (SPY) and Gold (GLD), integrating an OVX oil-volatility gate and a yield-curve state model. Improved risk-adjusted returns and materially reduced crisis drawdowns through dynamic macro-driven risk scaling."
+      "title": "Research Assistant - Part Time",
+      "organization": "Bocconi University",
+      "period": "Jul 2026 - Present",
+      "overview": "Analyzed 10-K readability with topic, dispersion, classification, and embedding methods. I am now studying whether textual features in M&A disclosures predict post-merger litigation involving target companies; follow the <link href=\"https://ma-research.marcomoscatelli.com/\"><underline>work-in-progress research</underline></link>. Supervised by Professor Claudia Imperatore."
     },
     {
-      "title": "Web Developer",
-      "organization": "Freelancer",
-      "period": "June 2022 - Mar 2025",
-      "overview": "Delivered full-stack web projects, including SaaS platforms, eCommerce stores, and personal portfolios, from concept to deployment. Designed scalable web architectures, optimized application performance, and implemented CI/CD pipelines to streamline development and deployment workflows. Managed cloud hosting and infrastructure across platforms such as Vercel, Heroku, and Netlify, ensuring reliable and maintainable applications. Collaborated directly with clients across Europe, overseeing the entire development lifecycle, from UX design and API integration to deployment, testing, and ongoing maintenance."
+      "title": "Freelance Web Developer",
+      "organization": "Self-employed",
+      "period": "Jun 2022 - Mar 2025",
+      "overview": "Delivered SaaS platforms, eCommerce stores, and personal portfolios from concept to deployment. Implemented CI/CD and cloud hosting across Vercel, Heroku, and Netlify while managing projects for European clients from UX design and API integration through maintenance."
     }
   ],
   "education": [
     {
       "title": "BSc in Economics, Management and Computer Science",
-      "organization": "Universita Bocconi",
-      "period": "2025 - Present",
-      "overview": "GPA: 30/31. Bachelor studies in economics, management, and computer science at Bocconi University."
+      "organization": "Bocconi University",
+      "period": "Sep 2025 - Jun 2028 (Expected)",
+      "overview": "Second-year student with a GPA of 29.86/30. Relevant coursework includes Accounting, Mathematics, Statistics, and Computer Science. Class and course representative."
+    },
+    {
+      "title": "Italian Scientific High School Diploma - Applied Sciences",
+      "organization": "Liceo Majorana",
+      "period": "Sep 2020 - Jul 2025",
+      "overview": "Completed the Italian scientific high school curriculum with an applied-sciences specialization."
+    }
+  ],
+  "extracurriculars": [
+    {
+      "title": "Member",
+      "organization": "BSIC Association",
+      "period": "Jan 2026 - Present",
+      "overview": "Contributed to research on regime-based investing, using XGBoost to select among strategies tailored to four market regimes."
+    },
+    {
+      "title": "Member",
+      "organization": "BAINSA Association",
+      "period": "Oct 2025 - Present",
+      "overview": "Built and backtested a macro-gated time-series momentum strategy on SPY and GLD, improving risk-adjusted returns and reducing drawdowns. Also built a chess engine reaching approximately 1700 Elo when benchmarked against Stockfish."
     }
   ],
   "certifications": [
@@ -63,7 +89,17 @@
       "title": "Certificate in Advanced English",
       "issuer": "Cambridge English",
       "issuedAt": "August 2024",
-      "overview": "Credential ID C8306776."
+      "overview": "Cambridge C1 Advanced, score 199."
+    },
+    {
+      "title": "A Deep Understanding of Deep Learning (with Python Intro)",
+      "issuer": "Udemy",
+      "overview": "Coursework in deep-learning theory and implementation with Python."
+    },
+    {
+      "title": "The Web Developer Bootcamp 2022",
+      "issuer": "Udemy",
+      "overview": "Full-stack web development course."
     }
   ]
 }

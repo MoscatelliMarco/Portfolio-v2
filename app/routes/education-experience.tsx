@@ -19,7 +19,7 @@ type TimedEntry = {
 type Certification = {
   title: string;
   issuer: string;
-  issuedAt: string;
+  issuedAt?: string;
   overview: string;
 };
 
@@ -36,6 +36,7 @@ export function meta({}: Route.MetaArgs) {
 export default function EducationExperience() {
   const experience = content.experience satisfies TimedEntry[];
   const education = content.education satisfies TimedEntry[];
+  const extracurriculars = content.extracurriculars satisfies TimedEntry[];
   const certifications = content.certifications satisfies Certification[];
 
   return (
@@ -53,9 +54,17 @@ export default function EducationExperience() {
           delayOffset={experience.length + 2}
           keyPrefix="education"
         />
+        <EntrySection
+          title="Extracurriculars"
+          entries={extracurriculars}
+          delayOffset={experience.length + education.length + 3}
+          keyPrefix="extracurricular"
+        />
         <CertificationSection
           entries={certifications}
-          delayOffset={experience.length + education.length + 3}
+          delayOffset={
+            experience.length + education.length + extracurriculars.length + 4
+          }
         />
       </div>
     </ContentPage>
@@ -84,7 +93,9 @@ function EntrySection({
           >
             <Paragraph>
               <span className="font-medium text-[#fafafa]">{entry.title}</span>
-              {entry.organization.toLowerCase() == "freelancer" ? " as " : " at "}
+              {entry.organization.toLowerCase() === "self-employed"
+                ? " / "
+                : " at "}
               <span className="text-[#fafafa]">{entry.organization}</span>
               {" / "}
               {entry.period}
@@ -120,8 +131,7 @@ function CertificationSection({
               <span className="font-medium text-[#fafafa]">{entry.title}</span>
               {" by "}
               <span className="text-[#fafafa]">{entry.issuer}</span>
-              {" / "}
-              {entry.issuedAt}
+              {entry.issuedAt && ` / ${entry.issuedAt}`}
               {"."}
             </Paragraph>
             <Paragraph>

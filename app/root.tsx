@@ -81,7 +81,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <img
           src="/error.webp"
           alt=""
-          className="mb-9 w-full max-w-xs object-contain"
+          className="mb-8 w-full max-w-[15rem] object-contain sm:max-w-[17rem]"
           decoding="async"
         />
         <h1 className="text-5xl font-semibold text-[#fafafa] sm:text-6xl">
