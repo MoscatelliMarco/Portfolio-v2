@@ -5,8 +5,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link,
 } from "react-router";
 
+import { AnalyticsTracker } from "~/components/analytics-tracker";
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -42,7 +44,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <AnalyticsTracker />
+      <Outlet />
+    </>
+  );
 }
 
 const statusMessages: Record<number, string> = {
@@ -88,12 +95,15 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           {statusCode}
         </h1>
         <p className="mt-3 text-[0.95rem] leading-[1.75]">{message}</p>
-        <a
-          href="/"
+        <Link
+          to="/"
           className="animated-underline-link mt-5 text-[0.82rem] font-medium text-[#fafafa]"
+          data-ph-capture-attribute-click-name="error_home"
+          data-ph-capture-attribute-surface="error"
+          data-ph-capture-attribute-link-kind="internal"
         >
           Home
-        </a>
+        </Link>
       </section>
       {(details || stack) && (
         <section className="sr-only" aria-label="Developer error details">

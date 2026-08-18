@@ -40,7 +40,10 @@ export default function EducationExperience() {
   const certifications = content.certifications satisfies Certification[];
 
   return (
-    <ContentPage title="Education & Experience">
+    <ContentPage
+      title="Education & Experience"
+      analyticsSurface="education_experience"
+    >
       <div className="flex flex-col gap-9">
         <EntrySection
           title="Experience"

@@ -22,7 +22,7 @@ export default function Publications() {
   const publications = content.publications satisfies Publication[];
 
   return (
-    <ContentPage title="Publications">
+    <ContentPage title="Publications" analyticsSurface="publications">
       <div className="flex flex-col gap-7">
         {publications.map((publication, index) => (
           <AnimatedBlock key={publication.title} delay={(index + 1) * 0.08}>
@@ -55,8 +55,18 @@ function PublicationTitle({ publication }: { publication: Publication }) {
       className="animated-underline-link font-medium text-[#fafafa]"
       target={publication.link.startsWith("http") ? "_blank" : undefined}
       rel={publication.link.startsWith("http") ? "noreferrer" : undefined}
+      data-ph-capture-attribute-click-name={`publication_${analyticsSlug(publication.title)}_open`}
+      data-ph-capture-attribute-surface="publications"
+      data-ph-capture-attribute-link-kind="external"
     >
       {publication.title}
     </a>
   );
+}
+
+function analyticsSlug(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }

@@ -53,7 +53,7 @@ VITE_BIRTHDATE=2006-01-01
 
 ## Links
 
-Use `<link href="...">...</link>` for links:
+Use `<link href="..." analytics-name="stable_click_name" analytics-surface="page_name">...</link>` for links. Every live link needs a stable `analytics-name`; optional `analytics-kind` values include `internal`, `external`, `email`, and `download`.
 
 ```md
 You can find me on <link href="https://www.linkedin.com/in/moscatellimarco/">LinkedIn</link>.

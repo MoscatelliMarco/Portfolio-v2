@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router";
 
 import { ShimmeringText } from "~/components/ui/shimmering-text";
 
@@ -192,14 +193,36 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
       );
 
     case "link":
+      const href = node.attrs.href ?? "#";
+      const analyticsAttributes = {
+        "data-ph-capture-attribute-click-name": node.attrs["analytics-name"],
+        "data-ph-capture-attribute-surface": node.attrs["analytics-surface"],
+        "data-ph-capture-attribute-link-kind":
+          node.attrs["analytics-kind"] ?? linkKind(href, node.attrs.download),
+      };
+
+      if (href.startsWith("/") && !node.attrs.download) {
+        return (
+          <Link
+            key={key}
+            to={href}
+            className="inline cursor-pointer font-medium whitespace-nowrap text-[#fafafa] transition-colors hover:text-white"
+            {...analyticsAttributes}
+          >
+            {children}
+          </Link>
+        );
+      }
+
       return (
         <a
           key={key}
-          href={node.attrs.href}
+          href={href}
           className="inline cursor-pointer font-medium whitespace-nowrap text-[#fafafa] transition-colors hover:text-white"
           target={node.attrs.href?.startsWith("http") ? "_blank" : undefined}
           rel={node.attrs.href?.startsWith("http") ? "noreferrer" : undefined}
           download={node.attrs.download}
+          {...analyticsAttributes}
         >
           {children}
         </a>
@@ -212,6 +235,13 @@ function renderInlineNode(node: InlineNode, key: string): ReactNode {
         </span>
       );
   }
+}
+
+function linkKind(href: string, download?: string) {
+  if (download) return "download";
+  if (href.startsWith("mailto:")) return "email";
+  if (href.startsWith("/")) return "internal";
+  return "external";
 }
 
 function nodesToText(nodes: InlineNode[]): string {

@@ -1,13 +1,16 @@
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 export function ContentPage({
   title,
   children,
+  analyticsSurface,
 }: {
   title: string;
   children: ReactNode;
+  analyticsSurface: "projects" | "publications" | "education_experience";
 }) {
   const [readyToAnimate, setReadyToAnimate] = useState(false);
 
@@ -27,12 +30,15 @@ export function ContentPage({
           }
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <a
-            href="/"
+          <Link
+            to="/"
             className="animated-underline-link mb-6 inline-block text-[0.82rem] font-medium text-neutral-100"
+            data-ph-capture-attribute-click-name={`${analyticsSurface}_home`}
+            data-ph-capture-attribute-surface={analyticsSurface}
+            data-ph-capture-attribute-link-kind="internal"
           >
             Home
-          </a>
+          </Link>
           <h1 className="text-xl xl:text-2xl font-medium text-[#fafafa]">{title}</h1>
         </motion.header>
         {children}
