@@ -18,6 +18,7 @@ type TimedEntry = {
 
 type Certification = {
   title: string;
+  link?: string;
   issuer: string;
   issuedAt?: string;
   overview: string;
@@ -96,10 +97,17 @@ function EntrySection({
           >
             <Paragraph>
               <span className="font-medium text-[#fafafa]">{entry.title}</span>
-              {entry.organization.toLowerCase() === "self-employed"
-                ? " / "
-                : " at "}
-              <span className="text-[#fafafa]">{entry.organization}</span>
+              {entry.organization.toLowerCase() === "self-employed" ? (
+                <>
+                  {" being "}
+                  <span className="text-[#fafafa]">{entry.organization}</span>
+                </>
+              ) : (
+                <>
+                  {" at "}
+                  <span className="text-[#fafafa]">{entry.organization}</span>
+                </>
+              )}
               {" / "}
               {entry.period}
               {"."}
@@ -131,7 +139,7 @@ function CertificationSection({
             delay={(delayOffset + index) * 0.08}
           >
             <Paragraph>
-              <span className="font-medium text-[#fafafa]">{entry.title}</span>
+              <CertificationTitle certification={entry} />
               {" by "}
               <span className="text-[#fafafa]">{entry.issuer}</span>
               {entry.issuedAt && ` / ${entry.issuedAt}`}
@@ -145,4 +153,37 @@ function CertificationSection({
       </div>
     </section>
   );
+}
+
+function CertificationTitle({
+  certification,
+}: {
+  certification: Certification;
+}) {
+  if (!certification.link) {
+    return (
+      <span className="font-medium text-[#fafafa]">{certification.title}</span>
+    );
+  }
+
+  return (
+    <a
+      href={certification.link}
+      className="animated-underline-link font-medium text-[#fafafa]"
+      target="_blank"
+      rel="noreferrer"
+      data-ph-capture-attribute-click-name={`certification_${analyticsSlug(certification.title)}_open`}
+      data-ph-capture-attribute-surface="education_experience"
+      data-ph-capture-attribute-link-kind="external"
+    >
+      {certification.title}
+    </a>
+  );
+}
+
+function analyticsSlug(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }

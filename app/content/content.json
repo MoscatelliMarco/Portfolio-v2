@@ -38,20 +38,20 @@
   ],
   "experience": [
     {
-      "title": "Generative AI Engineer Intern",
-      "organization": "Accenture",
-      "period": "Jul 2026 - Present",
-      "overview": "Developed a multi-agent AI concierge for Snam and am building a Neo4j knowledge graph and GraphRAG pipeline over internal documentation, combining graph retrieval with vector search and benchmarking it against standard RAG."
-    },
-    {
-      "title": "Research Assistant - Part Time",
+      "title": "Research Assistant",
       "organization": "Bocconi University",
       "period": "Jul 2026 - Present",
-      "overview": "Analyzed 10-K readability with topic, dispersion, classification, and embedding methods. I am now studying whether textual features in M&A disclosures predict post-merger litigation involving target companies; follow the <link href=\"https://ma-research.marcomoscatelli.com/\" analytics-name=\"experience_ma_research\" analytics-surface=\"education_experience\" analytics-kind=\"external\"><underline>work-in-progress research</underline></link>. Supervised by Professor Claudia Imperatore."
+      "overview": "Studying whether textual features in M&A disclosures predict post-merger litigation involving target companies; follow the <link href=\"https://ma-research.marcomoscatelli.com/\" analytics-name=\"experience_ma_research\" analytics-surface=\"education_experience\" analytics-kind=\"external\"><underline>work-in-progress research</underline></link>. Previously analyzed 10-K readability with topic, dispersion, classification, and embedding methods. Supervised by Professor Claudia Imperatore."
+    },
+    {
+      "title": "Generative AI Engineer Intern",
+      "organization": "Accenture",
+      "period": "Jul 2026 - Sep 2026",
+      "overview": "Developed a multi-agent AI concierge using the company's existing LLM. Built a Neo4j knowledge graph and GraphRAG pipeline over internal documentation, combining graph retrieval with vector search. Using an LLM evaluator, the GraphRAG pipeline outperformed the existing standard RAG approach by six percentage points."
     },
     {
       "title": "Freelance Web Developer",
-      "organization": "Self-employed",
+      "organization": "self employed",
       "period": "Jun 2022 - Mar 2025",
       "overview": "Delivered SaaS platforms, eCommerce stores, and personal portfolios from concept to deployment. Implemented CI/CD and cloud hosting across Vercel, Heroku, and Netlify while managing projects for European clients from UX design and API integration through maintenance."
     }
@@ -61,7 +61,7 @@
       "title": "BSc in Economics, Management and Computer Science",
       "organization": "Bocconi University",
       "period": "Sep 2025 - Jun 2028 (Expected)",
-      "overview": "Second-year student with a GPA of 29.86/30. Relevant coursework includes Accounting, Mathematics, Statistics, and Computer Science. Class and course representative."
+      "overview": "Second-year student with a GPA of 29.86/30. Relevant coursework includes Accounting, Linear Algebra, Advanced Statistics, Computer Science, and Computer Programming. Class and course representative."
     },
     {
       "title": "Italian Scientific High School Diploma - Applied Sciences",
@@ -93,11 +93,13 @@
     },
     {
       "title": "A Deep Understanding of Deep Learning (with Python Intro)",
+      "link": "https://www.udemy.com/certificate/UC-9ecd45a3-28d5-4860-aaf4-04bd9e6ee198/",
       "issuer": "Udemy",
       "overview": "Coursework in deep-learning theory and implementation with Python."
     },
     {
       "title": "The Web Developer Bootcamp 2022",
+      "link": "https://www.udemy.com/certificate/UC-67365070-707c-4698-bd32-7db985f55159/",
       "issuer": "Udemy",
       "overview": "Full-stack web development course."
     }
