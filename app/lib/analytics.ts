@@ -1,10 +1,15 @@
 import type { BeforeSendFn, CaptureResult, Properties } from "posthog-js";
 import posthog from "posthog-js";
 
+const siteHost = "www.marcomoscatelli.com";
+const siteOrigin = `https://${siteHost}`;
+
 export const analyticsEnabled =
   import.meta.env.VITE_POSTHOG_ENABLED === "true" &&
   Boolean(import.meta.env.VITE_POSTHOG_PROJECT_TOKEN) &&
-  import.meta.env.VITE_POSTHOG_PROJECT_TOKEN !== "phc_replace_me";
+  import.meta.env.VITE_POSTHOG_PROJECT_TOKEN !== "phc_replace_me" &&
+  typeof window !== "undefined" &&
+  window.location.hostname === siteHost;
 
 const knownPaths = new Set([
   "/",
@@ -70,10 +75,6 @@ export function captureScrollDepth(depth: number) {
   });
 }
 
-export function normalizeSiteDomain(hostname: string) {
-  return hostname.toLowerCase().replace(/\.$/, "");
-}
-
 export function normalizePagePath(pathname: string) {
   const withoutTrailingSlash =
     pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
@@ -100,12 +101,9 @@ export function classifyAcquisitionSource(currentUrl: string, referrer: string) 
     return "unknown";
   }
 
-  const referringDomain = normalizeSiteDomain(referringUrl.hostname);
-  const currentDomain = current
-    ? normalizeSiteDomain(current.hostname)
-    : normalizeSiteDomain(window.location.hostname);
+  const referringDomain = referringUrl.hostname;
 
-  if (referringDomain === currentDomain) {
+  if (referringDomain === siteHost) {
     return "direct";
   }
 
@@ -157,15 +155,13 @@ const sanitizeEvent: BeforeSendFn = (captureResult) => {
   }
 
   const properties = sanitizeProperties(captureResult.properties);
-  const siteDomain = normalizeSiteDomain(window.location.hostname);
   const pagePath = eventPagePath(captureResult);
 
-  properties.site_domain = siteDomain;
   properties.page_path = pagePath;
   properties.acquisition_source = acquisitionSource;
-  properties.$host = siteDomain;
+  properties.$host = siteHost;
   properties.$pathname = pagePath;
-  properties.$current_url = `${window.location.origin}${pagePath}`;
+  properties.$current_url = `${siteOrigin}${pagePath}`;
   properties.$geoip_disable = true;
 
   return {
@@ -225,7 +221,6 @@ function isSensitiveProperty(key: string) {
   const normalized = key.toLowerCase();
 
   if (
-    normalized === "site_domain" ||
     normalized === "page_path" ||
     normalized === "acquisition_source"
   ) {
