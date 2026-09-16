@@ -47,7 +47,7 @@
       "title": "Generative AI Engineer Intern",
       "organization": "Accenture",
       "period": "Jul 2026 - Sep 2026",
-      "overview": "Developed a multi-agent AI concierge using the company's existing LLM. Built a Neo4j knowledge graph and GraphRAG pipeline over internal documentation, combining graph retrieval with vector search. Using an LLM evaluator, the GraphRAG pipeline outperformed the existing standard RAG approach by six percentage points."
+      "overview": "Developed an enterprise AI concierge using large language models, orchestrating specialized agents and routing user requests across different capabilities. Built a Neo4j knowledge graph and GraphRAG pipeline combining graph-based retrieval with vector and keyword search, achieving a six-percentage-point improvement over the existing RAG pipeline as measured by an LLM evaluator."
     },
     {
       "title": "Freelance Web Developer",
