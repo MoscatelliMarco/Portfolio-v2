@@ -1,0 +1,222 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Random Stuff %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage[default]{sourcesanspro}
+\usepackage{microtype}
+\usepackage[normalem]{ulem}
+\linespread{0.96}
+\definecolor{accent}{HTML}{111111}
+\definecolor{secondary}{HTML}{5F6368}
+\definecolor{rule}{HTML}{B8BDC3}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{5pt}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\parindent}{0pt}
+% Sections formatting
+\titleformat{\section}{
+  \color{accent}\raggedright\fontsize{11.5}{13}\selectfont\bfseries
+}{}{0em}{}[\vspace{-2pt}\color{rule}\titlerule]
+\titlespacing*{\section}{0pt}{3pt}{4pt}
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Editable Spacing  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\sectionContentSpacing}
+\setlength{\sectionContentSpacing}{0.01cm}
+\newlength{\subheadingContentSpacing}
+\setlength{\subheadingContentSpacing}{-0.04cm}
+\newlength{\educationEndSpacing}
+\setlength{\educationEndSpacing}{0.0cm}
+\newlength{\educationDetailsSpacing}
+\setlength{\educationDetailsSpacing}{0.04cm}
+\newlength{\interSectionSpacing}
+\setlength{\interSectionSpacing}{0.04cm}
+\newlength{\headerEducationSpacing}
+\setlength{\headerEducationSpacing}{-0.25cm}
+\newcommand{\contactSeparatorSpacing}{0.8em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Commands  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\softbf}[1]{{\fontseries{sb}\selectfont #1}}
+\newcommand{\tightunderline}[1]{%
+  \begingroup\setlength{\ULdepth}{1.6pt}\color{secondary}\uline{\textcolor{accent}{#1}}\endgroup%
+}
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1}%
+}
+\newcommand{\resumeSubheading}[4]{
+  \item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \softbf{#1} & {\small\color{secondary}\softbf{#2}} \\
+      \textit{\small #3} & {\small\color{secondary}\textit{#4}} \\
+    \end{tabular*}\vspace{-4pt}
+}
+\newcommand{\resumeSubheadingContinue}[2]{
+  \vspace{-1pt}
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textit{\small #1} & {\small\color{secondary}\textit{#2}} \\
+    \end{tabular*}\vspace{-4pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \softbf{#1} & {\small\color{secondary} #2} \\
+    \end{tabular*}\vspace{-4pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}, itemsep=2pt, topsep=0pt, parsep=0pt, partopsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, labelsep=0.06in, itemsep=0.5pt, topsep=1pt, parsep=0pt, partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Heading  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+    \begin{center}
+    
+        {\fontsize{21}{23}\selectfont\fontseries{sb}\selectfont\color{accent} Marco Moscatelli}
+        \vspace{0.13cm}
+
+        {\footnotesize
+        \href{mailto:me@marcomoscatelli.com}{me@marcomoscatelli.com}
+        \hspace{\contactSeparatorSpacing}\textcolor{secondary}{|}\hspace{\contactSeparatorSpacing}
+        +39 3911733092
+        \hspace{\contactSeparatorSpacing}\textcolor{secondary}{|}\hspace{\contactSeparatorSpacing}
+        \href{https://www.linkedin.com/in/moscatellimarco/}{LinkedIn}
+        \hspace{\contactSeparatorSpacing}\textcolor{secondary}{|}\hspace{\contactSeparatorSpacing}
+        \href{https://github.com/MoscatelliMarco}{GitHub}
+        \hspace{\contactSeparatorSpacing}\textcolor{secondary}{|}\hspace{\contactSeparatorSpacing}
+        \href{https://marcomoscatelli.com}{marcomoscatelli.com}
+        }
+    \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Education  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{\headerEducationSpacing}
+\section{EDUCATION}
+    \vspace{\sectionContentSpacing}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+    {Bocconi University}{Milan, Italy}
+    {\href{https://www.unibocconi.it/en/programs/bachelor-science/economics-management-and-computer-science}{\tightunderline{BSc in Economics, Management and Computer Science}}}{Sep 2025 -- Jun 2028 (Expected)}
+        \par\vspace{\educationDetailsSpacing}
+        \resumeItemListStart
+            \resumeItem{\softbf{GPA:} 29.86/30}
+            \resumeItem{\softbf{Relevant Courses:} Accounting, Math, Statistics, Computer Science}
+            \resumeItem{Class and course representative.}
+        \resumeItemListEnd
+
+    \resumeSubheading
+    {Liceo Majorana}{Desio, Italy}
+    {Italian Scientific (Applied Sciences option) High School Diploma}{Sep 2020 -- Jul 2025}
+    \vspace{\educationEndSpacing}
+  \resumeSubHeadingListEnd
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Experience  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{EXPERIENCE}
+\vspace{\sectionContentSpacing}
+    \resumeSubHeadingListStart
+
+        \resumeSubheading
+        {Accenture}{Milan, Italy}
+        {Generative AI Engineer Intern}{Jul 2026 -- Present}
+        \vspace{\subheadingContentSpacing}
+        \resumeItemListStart
+            \resumeItem{Developed an AI concierge for Snam that orchestrates multiple specialized agents and routes user requests across different capabilities.}
+            \resumeItem{Building a knowledge graph with Neo4j and a GraphRAG pipeline over Snam's internal documentation, combining graph-based retrieval with vector/semantic search and benchmarking it against the existing standard RAG approach.}
+        \resumeItemListEnd
+
+        \resumeSubheading
+        {Bocconi University}{Milan, Italy}
+        {Research Assistant - Part Time}{Jul 2026 -- Present}
+        \vspace{\subheadingContentSpacing}
+        \resumeItemListStart
+            \resumeItem{Analyzed 10-K readability using LDA-derived topics, Average Reduced Frequency dispersion measures, naive-Bayes
+classifiers, and feature extraction from Qwen 8B embedding and FinBERT. Found that specific topics, their ordering, and their dispersion were associated with higher abnormal stock-return volatility, used as a market-based readability measure.}
+            \resumeItem{Analyzing M\&A disclosures to test whether textual features predict post-merger litigation involving target companies, using transformer-based methods to pool information across multiple document embeddings.}
+            \resumeItem{Research supervised by Professor Claudia Imperatore.}
+        \resumeItemListEnd
+
+        \resumeSubheading
+        {Freelance Web Developer}{Milan, Italy}
+        {Self-employed}{Jun 2022 -- Mar 2025}
+        \vspace{\subheadingContentSpacing}
+        \resumeItemListStart
+            \resumeItem{Delivered full-scale web projects, including SaaS platforms, eCommerce stores, and personal portfolios, from concept to deployment. Implemented CI/CD pipelines and cloud hosting setups (Vercel, Heroku, Netlify), ensuring 99.9\% uptime.}
+            \resumeItem{Collaborated directly with clients across Europe, managing all phases of development from UX design and API integration to deployment and maintenance.}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Extracurricular Activities  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{\interSectionSpacing}
+\section{EXTRACURRICULAR ACTIVITIES}
+\vspace{\sectionContentSpacing}
+    \resumeSubHeadingListStart
+
+        \resumeSubheading
+        {BSIC Association}{Milan, Italy}
+        {Member}{Jan 2026 -- Present}
+        \vspace{\subheadingContentSpacing}
+        \resumeItemListStart
+            \resumeItem{Contributed to a research paper on regime-based investing that identifies four market regimes and applies a tailored strategy to each; used an XGBoost model to predict which strategy is expected to perform best under current market conditions.}
+        \resumeItemListEnd
+
+        \resumeSubheading
+        {BAINSA Association}{Milan, Italy}
+        {Member}{Oct 2025 -- Present}
+        \vspace{\subheadingContentSpacing}
+        \resumeItemListStart
+            \resumeItem{Built and backtested a macro-gated time-series momentum strategy on S\&P 500 (SPY) and Gold (GLD), integrating an OVX oil-volatility gate and a yield-curve state model. Improved risk-adjusted returns (Sharpe and Sortino ratio) and reduced max drawdowns.}
+            \resumeItem{Built a chess engine reaching $\sim$1700 Elo (Benchmarked against Stockfish), implementing minimax with alpha-beta pruning, reinforcement learning, and neural evaluation.}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Certifications  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{\interSectionSpacing}
+\section{CERTIFICATIONS}
+\vspace{\sectionContentSpacing}
+    \resumeItemListStart
+         \resumeItem{Cambridge C1 Advanced (Score: 199)}
+         \resumeItem{Courses: \href{https://www.udemy.com/certificate/UC-9ecd45a3-28d5-4860-aaf4-04bd9e6ee198/}{\tightunderline{A Deep Understanding of Deep Learning (with Python intro) - Udemy}}, \href{https://www.udemy.com/certificate/UC-67365070-707c-4698-bd32-7db985f55159/}{\tightunderline{The Web Developer Bootcamp 2022 - Udemy}}, ICDL: Computer Essentials, Spreadsheets, Word Processing}
+    \resumeItemListEnd
+
+%%%%%%%%%%%%%%%%%%%%%%%% Additional Information %%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{\interSectionSpacing}
+\section{ADDITIONAL INFORMATION}
+\vspace{\sectionContentSpacing}
+    \resumeItemListStart
+        \resumeItem{\softbf{Language Skills:} Italian (native), English (C1).}
+        \resumeItem{\softbf{Technical Skills:} AI and ML (Python, PyTorch, NumPy, Pandas, Polars, DuckDB, Matplotlib, LangGraph, RAG, knowledge graphs); Backend Development (ExpressJS, Supabase, MongoDB, PostgreSQL, Neo4j); Frontend Development (React, NextJS, Svelte, SvelteKit, Figma); Mobile Development (Expo, React Native).}
+        \resumeItem{\softbf{Interests and Passions}: Economics and finance, coding, machine learning, artificial intelligence, and triathlon.}
+    \resumeItemListEnd
+
+\end{document}

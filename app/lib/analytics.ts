@@ -27,7 +27,6 @@ export function initializeAnalytics() {
 
   posthog.init(import.meta.env.VITE_POSTHOG_PROJECT_TOKEN, {
     api_host: import.meta.env.VITE_POSTHOG_HOST || "https://eu.i.posthog.com",
-    ui_host: "https://eu.posthog.com",
     defaults: "2026-05-30",
     cookieless_mode: "always",
     person_profiles: "never",
@@ -158,9 +157,15 @@ const sanitizeEvent: BeforeSendFn = (captureResult) => {
   }
 
   const properties = sanitizeProperties(captureResult.properties);
-  properties.site_domain = normalizeSiteDomain(window.location.hostname);
-  properties.page_path = eventPagePath(captureResult);
+  const siteDomain = normalizeSiteDomain(window.location.hostname);
+  const pagePath = eventPagePath(captureResult);
+
+  properties.site_domain = siteDomain;
+  properties.page_path = pagePath;
   properties.acquisition_source = acquisitionSource;
+  properties.$host = siteDomain;
+  properties.$pathname = pagePath;
+  properties.$current_url = `${window.location.origin}${pagePath}`;
   properties.$geoip_disable = true;
 
   return {
@@ -236,7 +241,6 @@ function isSensitiveProperty(key: string) {
     normalized.includes("referr") ||
     normalized === "$host" ||
     normalized === "$search_engine" ||
-    normalized.includes("raw_user_agent") ||
     normalized.includes("device_model") ||
     normalized.includes("browser_version") ||
     normalized.includes("os_version") ||
